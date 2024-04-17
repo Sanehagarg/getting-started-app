@@ -4,7 +4,7 @@ pipeline {
  stage('Build Docker Image') {
  steps {
  script {
- docker.build('<image-name>')
+ docker.build('getting-started')
  }
  }
  }
@@ -12,7 +12,7 @@ pipeline {
  steps {
  script {
  docker.withRegistry('<registry-url>', '<credentials-id>') {
- docker.image('<image-name>').push()
+ docker.image('getting-started').push()
  }
  }
  }
