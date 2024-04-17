@@ -2,12 +2,12 @@ pipeline {
     agent any
     stages{
         
-        stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t javatechie/devops-integration .'
-                }
-            }
+  stage('Build Docker Image') {
+        steps {
+          script {
+          docker.build('getting-started')
+                 }
+        }
         }
         stage('Push image to Hub'){
             steps{
