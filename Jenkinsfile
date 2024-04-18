@@ -12,11 +12,14 @@ pipeline {
             steps {
                 script {
                     // Securely provide the Docker Hub password using --password-stdin
-                    sh 'echo "shiaagarg1234" | docker login -u sanehagarg --password-stdin'
+                    //sh 'echo "shiaagarg1234" | docker login -u sanehagarg --password-stdin'
                     // Push the Docker image
-                    docker.withRegistry('https://hub.docker.com', 'sanehagarg-dockerid') {
-                        docker.image('getting-started').push()
-                    }
+                    //docker.withRegistry('https://hub.docker.com', 'sanehagarg-dockerid') {
+                    //    docker.image('getting-started').push()
+                    //}
+                    docker.withRegistry('https://registry.hub.docker.com', 'sanehagarg-dockerid') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
                 }
             }
         }
