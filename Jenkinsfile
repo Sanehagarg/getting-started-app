@@ -23,10 +23,10 @@ pipeline {
             }
         }
         }
-        stage('Deploy') {
-            steps {
-                echo "deploying..."
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         echo "deploying..."
+        //     }
+        // }
     }
 }
