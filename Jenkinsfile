@@ -4,15 +4,15 @@ pipeline {
              stage('Build Docker Image') {
                  steps {
                    script {
-                     docker.build('<image-name>')
+                     docker.build('node:18-alpine')
              }
          }
       }
              stage('Push Docker Image') {
                  steps {
                     script {
-                      docker.withRegistry('<registry-url>', '<credentials-id>') {
-                      docker.image('<image-name>').push()
+                      docker.withRegistry('<registry-url>', 'sanehagarg-docker') {
+                      docker.image('node:18-alpine').push()
              }
         }
       }
