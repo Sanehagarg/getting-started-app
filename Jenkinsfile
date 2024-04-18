@@ -11,7 +11,7 @@ pipeline {
              stage('Push Docker Image') {
                  steps {
                     script {
-                      docker.withRegistry('docker.io/sanehagarg/getting-started', 'sanehagarg-docker') {
+                      docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-docker') {
                       docker.image('getting-started').push()
              }
         }
