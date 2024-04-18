@@ -9,16 +9,18 @@ pipeline {
          }
       }
              stage('Push Docker Image') {
-                 steps {
-                         script {
-            withCredentials([string(credentialsId: 'sanehagarg-docker', variable: 'DOCKER_ACCESS_TOKEN')]) {
-                docker.withRegistry('', 'sanehagarg-docker') {
-                    docker.image('getting-started').push()
-                }
+    steps {
+        script {
+            // Securely provide the Docker Hub password using --password-stdin
+            sh 'echo "shiaagarg1234" | docker login -u sanehagarg --password-stdin'
+            // Push the Docker image
+            docker.withRegistry('https://hub.docker.com', 'sanehagarg-dockerid') {
+                docker.image('getting-started').push()
             }
-                     }
-           }
-             }
+        }
+    }
+}
+
             stage('Deploy') {
                 steps {
                      echo "deploying..."
