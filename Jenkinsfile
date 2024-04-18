@@ -9,8 +9,6 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-            steps {
-                script {
                     steps {
                        script {
                           docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-dockerid') {
@@ -20,8 +18,6 @@ pipeline {
              }
 
                 }
-            }
-        }
         // stage('Deploy') {
         //     steps {
         //         echo "deploying..."
