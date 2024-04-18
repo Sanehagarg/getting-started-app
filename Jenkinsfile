@@ -17,7 +17,7 @@ pipeline {
                     //docker.withRegistry('https://hub.docker.com', 'sanehagarg-dockerid') {
                     //    docker.image('getting-started').push()
                     //}
-                    docker.withRegistry('https://registry.hub.docker.com', 'sanehagarg-dockerid') {
+                    docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-dockerid') {
                                docker.image('getting-started').push()
                 }
             }
