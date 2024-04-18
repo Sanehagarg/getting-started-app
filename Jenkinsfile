@@ -11,8 +11,10 @@ pipeline {
         stage('Push Docker Image') {
                     steps {
                        script {
-                          docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-docker') {
-                             docker.image('getting-started').push()
+                          // docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-docker') {
+                          //    docker.image('getting-started').push()
+                            withDockerRegistry([credentialsId: 'sanehagarg-dockerid', url: 'https://hub.docker.com']) {
+                docker.image("getting-started").push("latest")
                                }
                      }
              }
