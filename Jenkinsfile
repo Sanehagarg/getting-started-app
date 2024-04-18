@@ -1,31 +1,26 @@
 pipeline {
-    agent any
-    stages{
-        
-  stage('Build Docker Image') {
-        steps {
-          script {
-          docker.build('getting-started')
-                 }
+     agent any
+         stages {
+             stage('Build Docker Image') {
+                 steps {
+                   script {
+                     docker.build('<image-name>')
+             }
+         }
+      }
+             stage('Push Docker Image') {
+                 steps {
+                    script {
+                      docker.withRegistry('<registry-url>', '<credentials-id>') {
+                      docker.image('<image-name>').push()
+             }
         }
-        }
-        stage('Push image to Hub'){
-            steps{
-                script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u javatechie -p ${dockerhubpwd}'
-
-}
-                   sh 'docker push javatechie/devops-integration'
-                }
-            }
-        }
-        stage('Deploy to k8s'){
-            steps{
-                script{
-                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
-                }
-            }
-        }
+      }
+   }
+            stage('Deploy') {
+                steps {
+                     // Add deployment steps here (e.g., Kubernetes deployment)
+             }
+         }
+     }
     }
-}
