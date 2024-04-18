@@ -18,8 +18,7 @@ pipeline {
                     //    docker.image('getting-started').push()
                     //}
                     docker.withRegistry('https://registry.hub.docker.com', 'sanehagarg-dockerid') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+                               docker.image('getting-started').push()
                 }
             }
         }
