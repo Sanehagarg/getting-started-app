@@ -4,7 +4,7 @@ pipeline {
              stage('Build Docker Image') {
                  steps {
                    script {
-                     docker.build('node:18-alpine')
+                     docker.build('getting-started')
              }
          }
       }
@@ -12,7 +12,7 @@ pipeline {
                  steps {
                     script {
                       docker.withRegistry('<registry-url>', 'sanehagarg-docker') {
-                      docker.image('node:18-alpine').push()
+                      docker.image('getting-started').push()
              }
         }
       }
