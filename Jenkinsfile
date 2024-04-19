@@ -27,7 +27,7 @@ pipeline {
           sh "docker login -u ${env.sanehagarg-dockerid} -p ${env.sanehagarg-dockeridPassword}"
           
         }
-
+            }
                 }
         // stage('Deploy') {
         //     steps {
