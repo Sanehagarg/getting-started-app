@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Push Docker Image') {
                     steps {
-                     ocker.image('getting-started').push()  
+                     docker.image('getting-started').push()  
               }
                 }
         }
