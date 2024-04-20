@@ -36,7 +36,6 @@ pipeline {
         }
     }
 }
-
 def fileExists(String filePath) {
-    return file(filePath).exists()
+    return new File(filePath).exists()
 }
