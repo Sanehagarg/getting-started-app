@@ -1,13 +1,12 @@
 pipeline {
- agent any
+    agent any
 
- stages {
- stage('Test') {
- steps {
- bat "C:\\Users\\GARG\\Python311 -m pytest tests/"
- bat 'pip install -r requirements.txt'
- bat 'pytest tests/'
- }
- }
- }
+    stages {
+        stage('Test') {
+            steps {
+                bat "pip install -r requirements.txt"
+                bat "python -m unittest discover -s tests -p '*_test.py'"
+            }
+        }
+    }
 }
