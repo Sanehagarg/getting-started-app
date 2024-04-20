@@ -19,7 +19,7 @@ pipeline {
         stage('Rollback') {
             steps {
                 // Execute rollback script
-                bat './rollback.sh'
+                bat 'rollback.sh'
             }
         }
     }
