@@ -24,7 +24,7 @@ pipeline {
              // }
             steps {
         withCredentials([usernamePassword(credentialsId: '	dockerid_saneha', passwordVariable: 'dockeridPassword', usernameVariable: 'sanehagarg')]) {
-          sh "docker login -u ${env.	dockerid_saneha} -p ${env.dockeridPassword}"
+          bat "docker login -u ${env.dockerid_saneha} -p ${env.dockeridPassword}"
           
         }
             }
