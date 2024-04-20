@@ -19,7 +19,7 @@ pipeline {
         stage('Rollback') {
             steps {
                 // Execute rollback script
-                sh './rollback.sh'
+                bat './rollback.sh'
             }
         }
     }
@@ -28,7 +28,4 @@ pipeline {
             echo "cleaning..."
         }
     }
-}
-def fileExists(String filePath) {
-    return new File(filePath).exists()
 }
