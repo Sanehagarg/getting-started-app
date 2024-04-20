@@ -23,8 +23,8 @@ pipeline {
              //         }
              // }
             steps {
-        withCredentials([usernamePassword(credentialsId: 'sanehagarg-dockerid', passwordVariable: 'sanehagarg-dockeridPassword', usernameVariable: 'sanehagarg-dockerid')]) {
-          sh "docker login -u ${env.sanehagarg-dockerid} -p ${env.sanehagarg-dockeridPassword}"
+        withCredentials([usernamePassword(credentialsId: '	dockerid_saneha', passwordVariable: 'dockeridPassword', usernameVariable: 'sanehagarg')]) {
+          sh "docker login -u ${env.	dockerid_saneha} -p ${env.dockeridPassword}"
           
         }
             }
