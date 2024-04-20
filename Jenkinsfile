@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Push Docker Image') {
                     steps {
-                     docker.image('getting-started').push()  
+                    docker.image('getting-started').push("Your commit message or any relevant message")
               }
                 }
         }
