@@ -21,7 +21,7 @@ pipeline {
             when {
                 expression { 
                     // Custom condition: Check if the flag file indicating successful deployment exists
-                    return !fileExists('deployment_success.txt')
+                    return !fileExists('./deployment_success.txt')
                 }
             }
             steps {
@@ -38,5 +38,5 @@ pipeline {
 }
 
 def fileExists(String filePath) {
-    return file(filePath).exists()
+    return file(./deployment_success.txt).exists()
 }
