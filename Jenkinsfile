@@ -7,10 +7,15 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
+           steps {
                 echo "deploying..."
-                // You might have deployment steps here
-            }
+                // Assume the deployment sets a flag or creates a file upon success
+                // For example, touch a flag file named deployment_success.txt upon successful deployment
+                script {
+                    // This is just an example, you should adjust this according to your actual deployment mechanism
+                    sh 'touch deployment_success.txt'
+                }
+        }
         }
         stage('Test') {
             steps {
