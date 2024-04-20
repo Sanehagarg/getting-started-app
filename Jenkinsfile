@@ -9,8 +9,8 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-             //        steps {
-             //           script {
+                    steps {
+                       script {
                           docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'dockerid_saneha') {
                              docker.image('getting-started').push()
              //    //             withDockerRegistry([credentialsId: 'sanehagarg-dockerid', url: 'https://hub.docker.com']) {
@@ -20,9 +20,10 @@ pipeline {
              //              /* Push the container to the custom Registry */
              //               customImage.push()
              //                   }
-             //         }
-             // }
+                      }
+              }
                 }
+        }
         // stage('Deploy') {
         //     steps {
         //         echo "deploying..."
