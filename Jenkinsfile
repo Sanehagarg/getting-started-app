@@ -1,26 +1,22 @@
 pipeline {
     agent any
     environment{
-        DOCKERHUB_CREDENTIALS = credentials('new_docker')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build('getting-started')
-                }
+              bat 'docker build -t Sanehagarg/getting-started-app:latest .'
             }
         }
         stage('Login') {
     steps {
-        withCredentials([usernamePassword(credentialsId: 'docker_jenkins', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-            bat "echo ${env.DOCKERHUB_PASSWORD} | docker login -u ${env.DOCKERHUB_USERNAME} --password-stdin"
-        }
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
     }
 }
         stage('Push Docker Image') {
                     steps {
-                     bat 'docker push getting-started'
+                     bat 'docker push Sanehagarg/getting-started-app:latest'
                     }
                 }
         }
