@@ -11,8 +11,8 @@ pipeline {
         stage('Push Docker Image') {
              //        steps {
              //           script {
-             //              // docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-docker') {
-             //              //    docker.image('getting-started').push()
+                          docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'dockerid_saneha') {
+                             docker.image('getting-started').push()
              //    //             withDockerRegistry([credentialsId: 'sanehagarg-dockerid', url: 'https://hub.docker.com']) {
              //    // docker.image("getting-started").push("latest")
              //               docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-dockerid') {
@@ -22,12 +22,6 @@ pipeline {
              //                   }
              //         }
              // }
-            steps {
-        withCredentials([usernamePassword(credentialsId: '	dockerid_saneha', passwordVariable: 'dockeridPassword', usernameVariable: 'sanehagarg')]) {
-          bat "docker login -u ${env.dockerid_saneha} -p ${env.dockeridPassword}"
-          
-        }
-            }
                 }
         // stage('Deploy') {
         //     steps {
