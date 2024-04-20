@@ -1,38 +1,35 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build('getting-started')
-                }
-            }
-        }
-        stage('Push Docker Image') {
-             //        steps {
-             //           script {
-             //              // docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-docker') {
-             //              //    docker.image('getting-started').push()
-             //    //             withDockerRegistry([credentialsId: 'sanehagarg-dockerid', url: 'https://hub.docker.com']) {
-             //    // docker.image("getting-started").push("latest")
-             //               docker.withRegistry('https://hub.docker.com/repository/docker/sanehagarg/getting-started', 'sanehagarg-dockerid') {
-             //               def customImage = docker.build("my-image:${env.BUILD_ID}")
-             //              /* Push the container to the custom Registry */
-             //               customImage.push()
-             //                   }
-             //         }
-             // }
-            steps {
-        withCredentials([usernamePassword(credentialsId: 'sanehagarg-dockerid', passwordVariable: 'sanehagarg-dockeridPassword', usernameVariable: 'sanehagarg-dockerid')]) {
-          sh "docker login -u ${env.sanehagarg-dockerid} -p ${env.sanehagarg-dockeridPassword}"
-          
-        }
-            }
-                }
-        // stage('Deploy') {
-        //     steps {
-        //         echo "deploying..."
-        //     }
-        // }
-    }
+ agent any
+ stages {
+ stage('Build') {
+ steps {
+ echo "building..."
+ }
+ }
+ stage('Deploy') {
+ steps {
+  echo "delpoying..."
+ }
+ }
+ stage('Test') {
+ steps {
+ echo "testing..."
+ }
+ }
+ stage('Rollback') {
+ when {
+© 2023. All Rights Reserved. 26
+ failure() // Execute rollback stage only on deployment failure
+ }
+ steps {
+ // Execute rollback script
+ sh './rollback.sh'
+ }
+ }
+ }
+ post {
+ always {
+ echo "cleaning..."
+ }
+ }
 }
