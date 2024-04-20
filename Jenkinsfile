@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Login') {
     steps {
-        withCredentials([string(credentialsId: 'sanehagarg-docker', variable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
+        withCredentials([string(credentialsId: 'dockerid_saneha', variable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
           bat 'docker login -u saneha'
         }
     }
