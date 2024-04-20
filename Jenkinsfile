@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        DOCKERHUB_CREDENTIALS = credentials('sanehagarg-docker')
+        DOCKERHUB_CREDENTIALS = credentials('dockerid_saneha')
     }
     stages {
         stage('Build Docker Image') {
