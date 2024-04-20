@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        DOCKERHUB_CREDENTIALS = credentials('dockerid_saneha')
+        DOCKERHUB_CREDENTIALS = credentials('sanehagarg-docker')
     }
     stages {
         stage('Build Docker Image') {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Login') {
     steps {
-        withCredentials([string(credentialsId: 'dockerid_saneha', variable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
+        withCredentials([string(credentialsId: 'sanehagarg-docker', variable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
             bat "echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin"
         }
     }
