@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Login') {
     steps {
-        withCredentials([string(credentialsId: 'sanehagarg-docker', variable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
-            bat "echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin"
+        withCredentials([string(credentialsId: 'jenkins', variable: 'DOCKERHUB_ACCESS_TOKEN')]) {
+            bat 'docker login -u sanehagarg -p %DOCKERHUB_ACCESS_TOKEN%'
         }
     }
 }
