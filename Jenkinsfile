@@ -38,5 +38,5 @@ pipeline {
 }
 
 def fileExists(String filePath) {
-    return file(./deployment_success.txt).exists()
+    return file(filePath).exists()
 }
