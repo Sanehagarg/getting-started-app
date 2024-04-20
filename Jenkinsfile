@@ -18,7 +18,6 @@ pipeline {
  }
  stage('Rollback') {
  when {
-© 2023. All Rights Reserved. 26
  failure() // Execute rollback stage only on deployment failure
  }
  steps {
