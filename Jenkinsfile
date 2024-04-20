@@ -27,5 +27,4 @@ pipeline {
         //         echo "deploying..."
         //     }
         // }
-    }
 }
